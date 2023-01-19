@@ -1,3 +1,5 @@
+import { detailWindow } from './eventDetailWindow.mjs';
+
 const date = new Date();
 
 const renderCalendar = () => {
@@ -69,3 +71,9 @@ const renderCalendar = () => {
     });
 
     renderCalendar();
+
+    document.querySelector('.days').addEventListener('click', () => {
+       console.log("Day clicked!!");
+       let val = detailWindow(18);   //18 is placeholder, to be replaced with corresponding date of the clicked box
+        console.log(val);
+    });

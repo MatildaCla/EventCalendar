@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "eventcalendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "manageMonthsDays.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatildaCla/EventCalendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatildaCla/EventCalendar/issues"
+  },
+  "homepage": "https://github.com/MatildaCla/EventCalendar#readme"
+}
