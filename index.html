@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Event Calendar</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
+  <div class="container">
+    <div class="calendar">
+      <div class="month">
+        <i class="prev"><-</i>
+        <div class="date">
+          <h1></h1>
+          <p></p>
+        </div>
+        <i class="next">-></i>
+      </div>
+      <div class="weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="days">
+      </div>
+    </div>
+  </div>
+
+  <script src="manageMonthsDays.js"></script>
 </body>
+
 </html>
