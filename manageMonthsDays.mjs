@@ -46,10 +46,10 @@ const renderCalendar = () => {
 
     for(let i = 1; i <= lastDay; i++) {
         if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-            days +=`<div class="today">${i}</div>`;
+            days +=`<div class="today" id="${i}">${i}</div>`;
         }
         else {
-            days +=`<div>${i}</div>`;
+            days +=`<div id="${i}">${i}</div>`;
         }
     }
 
@@ -72,8 +72,6 @@ const renderCalendar = () => {
 
     renderCalendar();
 
-    document.querySelector('.days').addEventListener('click', () => {
-       console.log("Day clicked!!");
-       let val = detailWindow(18);   //18 is placeholder, to be replaced with corresponding date of the clicked box
-        console.log(val);
+    document.querySelector('.days').addEventListener('click', (e) => {
+       let val = detailWindow(date.getFullYear(), date.getMonth() + 1, e.target.id);
     });
