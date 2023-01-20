@@ -13,7 +13,7 @@ export function detailWindow(year, month, day) {
         day = "0" + day;
     let date = year + "-" + month + "-" + day;
 
-    const detailWindow = window.open();
+    const detailWindow = window.open('eventDetail.html');
 
     let eventsToday = [];
 
@@ -37,7 +37,7 @@ export function detailWindow(year, month, day) {
 }
 
 function displayEvent(date, time, stadium, homeAbb, homeName, homeCountry, homeGoals, awayAbb, awayName, awayCountry, awayGoals, status, compName, stage, season) {
-        return "<div>" +
+        return "<div class='container'>" +
         "<div>Date: " + date + "</div>" +
         "<div>Time: " + time + "</div>" +
         "<div>Stadium: " + stadium + "</div>" +
