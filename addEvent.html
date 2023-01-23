@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+
+    <script type="text/javascript" src="addEvent.mjs"></script>
+</head>
+<body>
+<div>
+    <a href="./index.html">Event Overview</a>
+</div>
+
+<form onsubmit="addEvent()">
+    <label for="date">Date:</label><br>
+    <input type="text" id="date" name="date" placeholder="yyyy-mm-dd"><br>
+    <label for="time">Time:</label><br>
+    <input type="text" id="time" name="time"><br>
+    <label for="stadium">Stadium:</label><br>
+    <input type="text" id="stadium" name="stadium"><br>
+
+    <p>Home Team:</p>
+    <label for="hname">Name:</label><br>
+    <input type="text" id="hname" name="hname"><br>
+    <label for="habbr">Name Abbreviation:</label><br>
+    <input type="text" id="habbr" name="habbr"><br>
+    <label for="hcountry">Country:</label><br>
+    <input type="text" id="hcountry" name="hcountry"><br>
+    <label for="hgoal">Goals:</label>
+    <input type="number" id="hgoal" min="1" max="100" /><br>
+
+    <p>Home Team:</p>
+    <label for="aname">Name:</label><br>
+    <input type="text" id="aname" name="aname"><br>
+    <label for="aabbr">Name Abbreviation:</label><br>
+    <input type="text" id="aabbr" name="aabbr"><br>
+    <label for="acountry">Country:</label><br>
+    <input type="text" id="acountry" name="acountry"><br>
+    <label for="agoal">Goals:</label>
+    <input type="number" id="agoal" name="agoal" min="1" max="100" /><br>
+
+    <p>Status:</p>
+    <input type="radio" id="scheduled" name="status" value="scheduled">
+    <label for="scheduled">Scheduled</label><br>
+    <input type="radio" id="played" name="status" value="played">
+    <label for="played">Played</label><br>
+
+    <label for="competition">Competition Name:</label><br>
+    <input type="text" id="competition" name="competition"><br>
+    <label for="stage">Stage:</label><br>
+    <input type="text" id="stage" name="stage"><br>
+    <label for="season">Season:</label><br>
+    <input type="text" id="season" name="season"><br><br>
+
+    <input type="submit" value="Submit">
+
+
+</form>
+
+
+</body>
+</html>
