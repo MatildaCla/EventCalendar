@@ -8,6 +8,14 @@ fetch('./sportData.json')
 
 export function detailWindow(year, month, day) {
 
+    console.log(events);
+    // Get event from localStorage
+    if (localStorage.getItem("newEvent") != null) {
+        let newEvent = JSON.parse(window.localStorage.getItem("newEvent"));
+        events["data"].push(newEvent["data"][0]);
+    }
+    console.log(events);
+
     // Get relevant events
     if (month < 10)
         month = "0" + month;
@@ -17,11 +25,13 @@ export function detailWindow(year, month, day) {
 
     let eventsToday = [];
 
+
     for (let i = 0; i < Object.keys(events["data"]).length; i++) {
         if (events["data"][i]["dateVenue"].localeCompare(date) === 0) {
             eventsToday.push(events["data"][i]);
         }
     }
+
 
     // Create Event Detail Info
     const detailWindow = window.open('eventDetail.html');
