@@ -7,13 +7,13 @@ fetch('./sportData.json')
     });
 
 export function detailWindow(year, month, day) {
+
+    // Get relevant events
     if (month < 10)
         month = "0" + month;
     if (day < 10)
         day = "0" + day;
     let date = year + "-" + month + "-" + day;
-
-    const detailWindow = window.open('eventDetail.html');
 
     let eventsToday = [];
 
@@ -23,42 +23,50 @@ export function detailWindow(year, month, day) {
         }
     }
 
-    console.log(eventsToday);
+    // Create Event Detail Info
+    const detailWindow = window.open('eventDetail.html');
 
-    for (let i = 0; i < eventsToday.length; i++) {
-        detailWindow.document.body.innerHTML = displayEvent(eventsToday[i]["dateVenue"], eventsToday[i]["timeVenueUTC"], eventsToday[i]["stadium"],
-            eventsToday[i]["homeTeam"]["abbreviation"], eventsToday[i]["homeTeam"]["officialName"], eventsToday[i]["homeTeam"]["teamCountryCode"], eventsToday[i]["result"]["homeGoals"],
-            eventsToday[i]["awayTeam"]["abbreviation"], eventsToday[i]["awayTeam"]["officialName"], eventsToday[i]["awayTeam"]["teamCountryCode"], eventsToday[i]["result"]["awayGoals"],
-            eventsToday[i]["status"], eventsToday[i]["originCompetitionName"], eventsToday[i]["stage"]["name"], eventsToday[i]["season"]
-        );
+    detailWindow.onload = () => {
+        function appendElement(content, id) {
+            const node = detailWindow.document.createElement("p");
+            const textnode = detailWindow.document.createTextNode(content);
+            node.appendChild(textnode);
+            detailWindow.document.getElementById(id).appendChild(node);
+        }
+            function appendElementId(content, id, setId) {
+                const node = detailWindow.document.createElement("p");
+                node.setAttribute("id", setId);
+                const textnode = detailWindow.document.createTextNode(content);
+                node.appendChild(textnode);
+                detailWindow.document.getElementById(id).appendChild(node);
+        }
+
+        for (let i = 0; i < eventsToday.length; i++) {
+            appendElementId("", "body", "game" + i);
+            appendElementId("", "game" + i, "metaInfo" + i);
+            appendElement("Date: " + eventsToday[i]["dateVenue"], "metaInfo" + i);
+            appendElement("Time: " + eventsToday[i]["timeVenueUTC"], "metaInfo" + i);
+            appendElement("Stadium: " + eventsToday[i]["stadium"], "metaInfo" + i);
+
+            appendElementId("", "game" + i, "homeTeam" + i);
+            appendElement(eventsToday[i]["homeTeam"]["abbreviation"], "homeTeam" + i);
+            appendElement(eventsToday[i]["homeTeam"]["officialName"], "homeTeam" + i);
+            appendElement(eventsToday[i]["homeTeam"]["teamCountryCode"], "homeTeam" + i);
+            appendElement(eventsToday[i]["result"]["homeGoals"], "homeTeam" + i);
+
+            appendElementId("", "game" + i, "awayTeam" + i);
+            appendElement(eventsToday[i]["awayTeam"]["abbreviation"], "awayTeam" + i);
+            appendElement(eventsToday[i]["awayTeam"]["officialName"], "awayTeam" + i);
+            appendElement(eventsToday[i]["awayTeam"]["teamCountryCode"], "awayTeam" + i);
+            appendElement(eventsToday[i]["result"]["awayGoals"], "homeTeam" + i);
+
+            appendElementId("", "game" + i, "status" + i);
+            appendElement("Status: " + eventsToday[i]["status"], "status" + i);
+            appendElement("Competition : " + eventsToday[i]["originCompetitionName"], "status" + i);
+            appendElement("Stage:  " + eventsToday[i]["stage"]["name"], "status" + i);
+            appendElement("Season:  " + eventsToday[i]["season"], "status" + i);
+        }
     }
 
     return 0;
-}
-
-function displayEvent(date, time, stadium, homeAbb, homeName, homeCountry, homeGoals, awayAbb, awayName, awayCountry, awayGoals, status, compName, stage, season) {
-        return "<div class='container'>" +
-        "<div>Date: " + date + "</div>" +
-        "<div>Time: " + time + "</div>" +
-        "<div>Stadium: " + stadium + "</div>" +
-        "</div>" +
-        "<div>" +
-        "<div>" + homeAbb + "</div>" +
-        "<div>" + homeName + "</div>" +
-        "<div>" + homeCountry + "</div>" +
-        "<div>" + homeGoals + "</div>" +
-        "</div>" +
-        "<div>:</div>" +
-        "<div>" +
-        "<div>" + awayAbb + "</div>" +
-        "<div>" + awayName + "</div>" +
-        "<div>" + awayCountry + "</div>" +
-        "<div>" + awayGoals + "</div>" +
-        "</div>" +
-        "<div>" +
-        "<div>Status: " + status + "</div>" +
-        "<div>Competition: " + compName + "</div>" +
-        "<div>Stage: " + stage + "</div>" +
-        "<div>Season: " + season + "</div>" +
-        "</div>";
 }
