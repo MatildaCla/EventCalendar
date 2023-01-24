@@ -103,3 +103,15 @@ html {
     background-color: teal;
     color: white;
 }
+
+.detailContainer {
+    background-color: gray;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+    justify-content: center;
+    align-items: center;
+    border: #031a12 solid 1rem;
+}
+

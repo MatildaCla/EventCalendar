@@ -6,17 +6,18 @@ fetch('./sportData.json')
         events = data;
     });
 
+let loaded = false;
+
 export function detailWindow(year, month, day) {
 
-    console.log(events);
     // Get event from localStorage
-    if (localStorage.getItem("newEvent") != null) {
+    if (localStorage.getItem("newEvent") != null && !loaded) {
         let newEvent = JSON.parse(window.localStorage.getItem("newEvent"));
         events["data"].push(newEvent["data"][0]);
+        loaded = true;
     }
-    console.log(events);
 
-    // Get relevant events
+    // Get today's events
     if (month < 10)
         month = "0" + month;
     if (day < 10)
@@ -40,12 +41,14 @@ export function detailWindow(year, month, day) {
         function appendElement(content, id) {
             const node = detailWindow.document.createElement("p");
             const textnode = detailWindow.document.createTextNode(content);
+            node.setAttribute("class", "days");
             node.appendChild(textnode);
             detailWindow.document.getElementById(id).appendChild(node);
         }
             function appendElementId(content, id, setId) {
                 const node = detailWindow.document.createElement("p");
                 node.setAttribute("id", setId);
+                node.setAttribute("class", "detailContainer");
                 const textnode = detailWindow.document.createTextNode(content);
                 node.appendChild(textnode);
                 detailWindow.document.getElementById(id).appendChild(node);
@@ -68,7 +71,7 @@ export function detailWindow(year, month, day) {
             appendElement(eventsToday[i]["awayTeam"]["abbreviation"], "awayTeam" + i);
             appendElement(eventsToday[i]["awayTeam"]["officialName"], "awayTeam" + i);
             appendElement(eventsToday[i]["awayTeam"]["teamCountryCode"], "awayTeam" + i);
-            appendElement(eventsToday[i]["result"]["awayGoals"], "homeTeam" + i);
+            appendElement(eventsToday[i]["result"]["awayGoals"], "awayTeam" + i);
 
             appendElementId("", "game" + i, "status" + i);
             appendElement("Status: " + eventsToday[i]["status"], "status" + i);
